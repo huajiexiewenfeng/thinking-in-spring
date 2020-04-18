@@ -13,11 +13,13 @@ import java.util.Collection;
  */
 public class UserRepository {
 
-    private Collection<User> users;
+    private User user;//根据 user 名称注入
 
-    private BeanFactory beanFactory;
+    private Collection<User> users;//根据 User.class 类型注入
 
-    private ObjectFactory<User> userObjectFactory;
+    private BeanFactory beanFactory;//内建非 Bean 对象
+
+    private ObjectFactory<User> userObjectFactory;// 延迟注入
 
     private ObjectFactory<ApplicationContext> objectFactory;
 
@@ -51,6 +53,14 @@ public class UserRepository {
 
     public void setObjectFactory(ObjectFactory<ApplicationContext> objectFactory) {
         this.objectFactory = objectFactory;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

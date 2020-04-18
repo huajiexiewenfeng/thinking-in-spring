@@ -10,13 +10,6 @@
 
     <bean id="userRepository" class="com.huajie.thinking.in.spring.ioc.overview.repository.UserRepository"
     autowire="byType">
-       <!-- 硬编码 -->
-        <!--<property name="users">-->
-            <!--<util:list>-->
-                <!--<ref bean="user"></ref>-->
-                <!--<ref bean="superUser"></ref>-->
-            <!--</util:list>-->
-        <!--</property>-->
     </bean>
 
 </beans>

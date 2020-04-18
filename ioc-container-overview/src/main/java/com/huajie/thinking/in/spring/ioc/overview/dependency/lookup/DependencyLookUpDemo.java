@@ -24,9 +24,12 @@ public class DependencyLookUpDemo {
 
         lookupByType(beanFactory);
 
+        lookupByNameAndType(beanFactory);
+
         lookupCollectionByType(beanFactory);
 
         lookupByAnnotationType(beanFactory);
+
     }
 
     private static void lookupByAnnotationType(BeanFactory beanFactory) {
@@ -43,6 +46,11 @@ public class DependencyLookUpDemo {
             Map<String, User> users = listBeanFactory.getBeansOfType(User.class);
             System.out.println("查找到的所有集合对象---" + users);
         }
+    }
+
+    private static void lookupByNameAndType(BeanFactory beanFactory) {
+        User user = beanFactory.getBean("user",User.class);
+        System.out.println("名称类型查找---" + user);
     }
 
     private static void lookupByType(BeanFactory beanFactory) {
