@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 
 @Import(AnnotationBeanDefinitionDemo.Config.class)
 public class AnnotationBeanDefinitionDemo {
@@ -31,12 +33,18 @@ public class AnnotationBeanDefinitionDemo {
         //3.通过 @Import 来进行导入
 
         Map<String, Config> beansOfType = applicationContext.getBeansOfType(Config.class);
-        System.out.println(beansOfType);
+        printEach(beansOfType);
 
         Map<String, User> users = applicationContext.getBeansOfType(User.class);
-        System.out.println(users);
+        printEach(users);
 
         applicationContext.close();
+    }
+
+    private static void printEach(Map<String, ?> beansOfType) {
+        System.out.println("=====");
+        beansOfType.entrySet().stream().forEach(System.out::println);
+        System.out.println("=====");
     }
 
     /**

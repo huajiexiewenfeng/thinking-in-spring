@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * 单体 Bean 注册实例
  */
 public class SingletonBeanRegistrationDemo {
+
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         //注册外部单例对象
@@ -26,9 +27,6 @@ public class SingletonBeanRegistrationDemo {
 
         //关闭
         applicationContext.close();
-
-
     }
-
 
 }

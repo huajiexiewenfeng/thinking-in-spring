@@ -7,6 +7,6 @@ import com.huajie.thinking.in.spring.ioc.overview.domain.User;
  */
 public interface UserFactory {
     default User createUser(){
-        return User.createUser();
+        return User.createUser("工厂Bean-user");
     }
 }

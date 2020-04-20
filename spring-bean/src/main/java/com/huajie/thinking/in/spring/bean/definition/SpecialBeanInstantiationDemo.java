@@ -21,7 +21,7 @@ public class SpecialBeanInstantiationDemo {
         //通过 ApplicationContext 获取 AutowireCapableBeanFactory
         AutowireCapableBeanFactory beanFactory = applicationContext.getAutowireCapableBeanFactory();
 
-        ServiceLoader<UserFactory> load = beanFactory.getBean("userFactoryServiceLoader", ServiceLoader.class);
+//        ServiceLoader<UserFactory> load = beanFactory.getBean("userFactoryServiceLoader", ServiceLoader.class);
 //        demoServiceLoader();
 //        displayServiceLoader(load);
         UserFactory bean = beanFactory.createBean(DefaultUserFactory.class);

@@ -75,6 +75,12 @@ public class User implements BeanNameAware {
         this.age = age;
     }
 
+    public static User createUser(String name) {
+        User user = new User();
+        user.setName(name);
+        return user;
+    }
+
     public static User createUser() {
         User user = new User();
         user.setName("static-user");

@@ -16,6 +16,4 @@ public class BeanAlisaDemo {
         User user = (User) beanFactory.getBean("user");
         System.out.println(xwfUser==user);
     }
-
-
 }
