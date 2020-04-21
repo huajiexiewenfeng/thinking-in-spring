@@ -5,6 +5,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import javax.annotation.PostConstruct;
+
 /**
  * {@link BeanCreationException}示例
  */
@@ -26,9 +28,14 @@ public class BeanCreationExceptionDemo {
 
     static class POJO implements InitializingBean{
 
+        @PostConstruct
+        public void init() throws Exception {
+            throw new Exception("init():For purposes...");
+        }
+
         @Override
         public void afterPropertiesSet() throws Exception {
-            throw new Exception("For purposes...");
+            throw new Exception("afterPropertiesSet():For purposes...");
         }
     }
 

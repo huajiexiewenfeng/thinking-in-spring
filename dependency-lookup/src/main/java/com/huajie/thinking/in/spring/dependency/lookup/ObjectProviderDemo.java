@@ -18,6 +18,7 @@ public class ObjectProviderDemo {
         //启动应用上下文
         applicationContext.refresh();
         lookupByObjectProvider(applicationContext);
+        lookupGetIfAvailable(applicationContext);
         lookupIfAvailable(applicationContext);
         lookupByStreamOps(applicationContext);
         applicationContext.close();
@@ -32,12 +33,19 @@ public class ObjectProviderDemo {
         beanProvider.stream().forEach(System.out::println);
     }
 
-    private static void lookupIfAvailable(AnnotationConfigApplicationContext applicationContext) {
+    private static void lookupGetIfAvailable(AnnotationConfigApplicationContext applicationContext) {
         ObjectProvider<User> beanProvider = applicationContext.getBeanProvider(User.class);
 //        User ifAvailable = beanProvider.getIfAvailable(()->User.createUser());
         User ifAvailable = beanProvider.getIfAvailable(User::createUser);
         System.out.println(ifAvailable);
     }
+
+    private static void lookupIfAvailable(AnnotationConfigApplicationContext applicationContext) {
+        ObjectProvider<User> beanProvider = applicationContext.getBeanProvider(User.class);
+//        User ifAvailable = beanProvider.getIfAvailable(()->User.createUser());
+        beanProvider.ifAvailable(System.out::println);
+    }
+
 
     private static void lookupByObjectProvider(AnnotationConfigApplicationContext applicationContext) {
         ObjectProvider<String> beanProvider = applicationContext.getBeanProvider(String.class);
@@ -55,6 +63,11 @@ public class ObjectProviderDemo {
     //如果没有定义name 那么方法名就是 Bean 的名称
     public String message() {
         return "Message";
+    }
+
+    @Bean
+    public User user() {
+        return User.createUser("ifAvailable-user");
     }
 
 }

@@ -21,14 +21,15 @@ public class HierarchicalDependencyLookupDemo {
 
         //1.获取 HierarchicalBeanFactory <- ConfigurableBeanFatory <- ConfigurableListableBeanFactory
         ConfigurableListableBeanFactory beanFactory = applicationContext.getBeanFactory();
-        System.out.println("当前 BeanFactory 的 Parent BeanFactory" + beanFactory.getParentBeanFactory());
+        System.out.println("当前 BeanFactory 的 Parent BeanFactory：" + beanFactory.getParentBeanFactory());
+        //设置 Parent BeanFactory
         beanFactory.setParentBeanFactory(createParentBeanFactory());
-        System.out.println("当前 BeanFactory 的 Parent BeanFactory" + beanFactory.getParentBeanFactory());
+        System.out.println("当前 BeanFactory 的 Parent BeanFactory：" + beanFactory.getParentBeanFactory());
         //当前没有
         displayLocalBean(beanFactory, "user");
         //父 BeanFactory 有
         displayLocalBean((HierarchicalBeanFactory) beanFactory.getParentBeanFactory(), "user");
-
+        //递归调用
         displayContainsBean(beanFactory, "user");
         //启动应用上下文
         applicationContext.refresh();
@@ -37,7 +38,7 @@ public class HierarchicalDependencyLookupDemo {
     }
 
     private static void displayContainsBean(HierarchicalBeanFactory beanFactory, String beanName) {
-        System.out.printf("当前 BeanFactory [%s] 是否包含 bean[name:%s] : %s\n", beanFactory, beanFactory,
+        System.out.printf("当前 BeanFactory [%s] 是否包含 bean[name:%s] \n 结果： %s\n", beanFactory, beanFactory,
                 containsBean(beanFactory,beanName));
     }
 
@@ -53,7 +54,7 @@ public class HierarchicalDependencyLookupDemo {
     }
 
     private static void displayLocalBean(HierarchicalBeanFactory beanFactory, String beanName) {
-        System.out.printf("当前 BeanFactory [%s] 是否包含 bean[name:%s] : %s\n", beanFactory, beanFactory,
+        System.out.printf("当前 BeanFactory [%s] 是否包含 bean[name:%s] \n 结果： %s\n", beanFactory, beanFactory,
                 beanFactory.containsLocalBean(beanName));
     }
 

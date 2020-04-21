@@ -33,7 +33,7 @@ public class TypeSafetyDependencyLookupDemo {
     }
 
     private static void displayObjectProviderStreamOps(AnnotationConfigApplicationContext applicationContext) {
-        printBeansException("displayListableBeanFactoryGetBeansOfType",()->{
+        printBeansException("displayObjectProviderStreamOps",()->{
             ObjectProvider<User> beanProvider = applicationContext.getBeanProvider(User.class);
             beanProvider.stream().forEach(System.out::println);
         });
