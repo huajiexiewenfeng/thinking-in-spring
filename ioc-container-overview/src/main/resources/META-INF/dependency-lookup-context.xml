@@ -9,7 +9,9 @@
         <property name="age" value="18"/>
         <property name="id" value="1"/>
         <property name="configFileReource" value="classpath:/META-INF/user-config.properties"/>
+        <property name="city" value="WUHAN"/>
         <property name="cities" value="WUHAN,BEIJING"/>
+        <property name="lifeCities" value="WUHAN,BEIJING"/>
     </bean>
 
 

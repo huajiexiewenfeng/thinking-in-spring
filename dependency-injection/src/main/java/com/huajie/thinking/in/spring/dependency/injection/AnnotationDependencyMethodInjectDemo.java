@@ -17,12 +17,12 @@ public class AnnotationDependencyMethodInjectDemo {
     private UserHolder userHolder_resource;
 
     @Autowired
-    public void initUserHolder(UserHolder userHolder){
+    public void initUserHolder(UserHolder userHolder) {
         this.userHolder = userHolder;
     }
 
-    @Autowired
-    public void initUserHolder2(UserHolder userHolder_resource){
+    @Resource
+    public void initUserHolder2(UserHolder userHolder_resource) {
         this.userHolder_resource = userHolder_resource;
     }
 
@@ -33,15 +33,14 @@ public class AnnotationDependencyMethodInjectDemo {
         applicationContext.refresh();
 
         AnnotationDependencyMethodInjectDemo demo = applicationContext.getBean(AnnotationDependencyMethodInjectDemo.class);
-        System.out.println(demo.userHolder);
-        System.out.println(demo.userHolder_resource);
-        System.out.println(demo.userHolder==demo.userHolder_resource);
+        System.out.println("userHolder:" + demo.userHolder);
+        System.out.println("userHolder_resource:" + demo.userHolder_resource);
+        System.out.println("userHolder 和 userHolder_resource 比较:" +( demo.userHolder == demo.userHolder_resource));
         applicationContext.close();
     }
 
-
     @Bean
-    public User user(){
+    public User user() {
         User user = new User();
         user.setName("xwf-bean-field");
         user.setAge(20);
@@ -49,7 +48,7 @@ public class AnnotationDependencyMethodInjectDemo {
     }
 
     @Bean
-    public UserHolder userHolder(User user){
+    public UserHolder userHolder(User user) {
         return new UserHolder(user);
     }
 }

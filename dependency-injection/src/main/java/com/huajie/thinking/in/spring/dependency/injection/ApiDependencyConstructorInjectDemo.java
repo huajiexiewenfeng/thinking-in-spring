@@ -17,7 +17,6 @@ public class ApiDependencyConstructorInjectDemo {
         applicationContext.registerBeanDefinition("user-holder",createUserBean());
         applicationContext.refresh();
 
-
         UserHolder bean = applicationContext.getBean(UserHolder.class);
         System.out.println(bean);
         applicationContext.close();
@@ -40,7 +39,7 @@ public class ApiDependencyConstructorInjectDemo {
     @Bean
     public User user(){
         User user = new User();
-        user.setName("xwf-api-constructor");
+        user.setName("xwf-api-constructor-bean");
         user.setAge(20);
         return user;
     }

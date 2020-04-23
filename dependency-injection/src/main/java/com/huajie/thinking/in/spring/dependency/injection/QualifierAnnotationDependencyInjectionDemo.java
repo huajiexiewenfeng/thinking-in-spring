@@ -42,9 +42,9 @@ public class QualifierAnnotationDependencyInjectionDemo {
         QualifierAnnotationDependencyInjectionDemo beanDemo = applicationContext.getBean(QualifierAnnotationDependencyInjectionDemo.class);
         System.out.println("名称：" + beanDemo.user);
         System.out.println("分组：" + beanDemo.user_group);
-        System.out.println("集合：" + beanDemo.allUsers.size() + beanDemo.allUsers);
-        System.out.println("集合-分组：" + beanDemo.allUsers_group.size() + beanDemo.allUsers_group);
-        System.out.println("集合-分组-注解：" + beanDemo.allUsers_group_annotation.size() + beanDemo.allUsers_group_annotation);
+        System.out.println("集合：size-" + beanDemo.allUsers.size() + "=" + beanDemo.allUsers);
+        System.out.println("集合-分组：size-" + beanDemo.allUsers_group.size() + "=" + beanDemo.allUsers_group);
+        System.out.println("集合-分组-注解：size-" + beanDemo.allUsers_group_annotation.size() + "=" + beanDemo.allUsers_group_annotation);
         applicationContext.close();
     }
 
@@ -86,7 +86,7 @@ public class QualifierAnnotationDependencyInjectionDemo {
         return createUser("xwf-bean-group-annotation2");
     }
 
-    private static User createUser(String name){
+    private static User createUser(String name) {
         User user = new User();
         user.setName(name);
         return user;

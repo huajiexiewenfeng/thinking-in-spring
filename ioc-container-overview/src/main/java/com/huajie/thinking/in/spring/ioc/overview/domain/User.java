@@ -7,6 +7,7 @@ import org.springframework.core.io.Resource;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 用户类
@@ -26,6 +27,16 @@ public class User implements BeanNameAware {
     private City city;
 
     private City[] cities;
+
+    private List<City> lifeCities;
+
+    public List<City> getLifeCities() {
+        return lifeCities;
+    }
+
+    public void setLifeCities(List<City> lifeCities) {
+        this.lifeCities = lifeCities;
+    }
 
     public City getCity() {
         return city;
@@ -90,12 +101,14 @@ public class User implements BeanNameAware {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "beanName='" + beanName + '\'' +
+                ", id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", configFileReource=" + configFileReource +
                 ", city=" + city +
                 ", cities=" + Arrays.toString(cities) +
+                ", lifeCities=" + lifeCities +
                 '}';
     }
 

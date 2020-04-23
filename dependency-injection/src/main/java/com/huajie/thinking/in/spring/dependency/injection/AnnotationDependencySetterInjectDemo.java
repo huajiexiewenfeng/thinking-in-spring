@@ -28,15 +28,15 @@ public class AnnotationDependencySetterInjectDemo {
     }
 
     @Bean
-    public User user(){
+    public User user() {
         User user = new User();
-        user.setName("xwf-bean");
+        user.setName("xwf-注解-setter-bean");
         user.setAge(20);
         return user;
     }
 
     @Bean
-    public UserHolder userHolder( User user){
+    public UserHolder userHolder(User user) {
         UserHolder userHolder = new UserHolder();
         userHolder.setUser(user);
         return userHolder;

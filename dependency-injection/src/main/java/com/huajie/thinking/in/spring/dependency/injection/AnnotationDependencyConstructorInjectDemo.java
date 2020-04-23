@@ -11,13 +11,7 @@ public class AnnotationDependencyConstructorInjectDemo {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         applicationContext.register(AnnotationDependencyConstructorInjectDemo.class);
-
-//        XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(applicationContext);
-//        String location = "classpath:/META-INF/dependency-setter-injection-context.xml";
-//        beanDefinitionReader.loadBeanDefinitions(location);
-
         applicationContext.refresh();
-
 
         UserHolder bean = applicationContext.getBean(UserHolder.class);
         System.out.println(bean);
@@ -27,7 +21,7 @@ public class AnnotationDependencyConstructorInjectDemo {
     @Bean
     public User user(){
         User user = new User();
-        user.setName("xwf-bean");
+        user.setName("xwf-annotation-constructor-bean");
         user.setAge(20);
         return user;
     }

@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import static org.springframework.context.annotation.AnnotationConfigUtils.AUTOWIRED_ANNOTATION_PROCESSOR_BEAN_NAME;
 
 /**
- * 基于注解实现 Constructor 注入示例
+ * 基于注解实现字段注入示例
  */
 public class AnnotationDependencyFieldInjectDemo {
 
@@ -29,7 +29,7 @@ public class AnnotationDependencyFieldInjectDemo {
     private User inject_user;
 
     @Bean(name = "injectUserAnnotationBeanPostProcessor")
-    @Order(Ordered.LOWEST_PRECEDENCE-3)
+    @Order(Ordered.LOWEST_PRECEDENCE - 3)
     public static AutowiredAnnotationBeanPostProcessor autowiredAnnotationBeanPostProcessor() {
         AutowiredAnnotationBeanPostProcessor beanPostProcessor = new AutowiredAnnotationBeanPostProcessor();
         beanPostProcessor.setAutowiredAnnotationType(InjectUser.class);
@@ -42,11 +42,12 @@ public class AnnotationDependencyFieldInjectDemo {
 
         applicationContext.refresh();
 
+        // @Autowired 不支持 static 修饰的属性，所以还是采用依赖查找的方式
         AnnotationDependencyFieldInjectDemo demo = applicationContext.getBean(AnnotationDependencyFieldInjectDemo.class);
-        System.out.println(demo.userHolder);
-        System.out.println(demo.userHolder_resource);
-        System.out.println(demo.userHolder == demo.userHolder_resource);
-        System.out.println(demo.inject_user);
+        System.out.println("userHolder:" + demo.userHolder);
+        System.out.println("userHolder_resource:" + demo.userHolder_resource);
+        System.out.println("userHolder 和 userHolder_resource 比较:" + (demo.userHolder == demo.userHolder_resource));
+        System.out.println("inject_user:" + demo.inject_user);
         applicationContext.close();
     }
 

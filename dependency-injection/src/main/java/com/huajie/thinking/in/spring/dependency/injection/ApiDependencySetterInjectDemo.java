@@ -36,11 +36,10 @@ public class ApiDependencySetterInjectDemo {
         return beanDefinitionBuilder.getBeanDefinition();
     }
 
-
     @Bean
     public User user(){
         User user = new User();
-        user.setName("xwf-api");
+        user.setName("xwf-api-setter-bean");
         user.setAge(20);
         return user;
     }
