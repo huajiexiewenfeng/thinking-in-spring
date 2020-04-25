@@ -27,8 +27,8 @@ public class ExternalConfigurationDependencyDemo {
 
     @PostConstruct
     public void init() {
-//        System.out.println(id);
-//        System.out.println(resource);
+        System.out.println("PostConstruct-> id: " + id);
+        System.out.println("PostConstruct-> resource: " + resource);
     }
 
     public static void main(String[] args) {

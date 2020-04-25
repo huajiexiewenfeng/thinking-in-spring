@@ -23,9 +23,12 @@ public class ResolvableDependencySourceDemo {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         applicationContext.register(ResolvableDependencySourceDemo.class);
+
+        //第二种方式
         applicationContext.addBeanFactoryPostProcessor(beanFactory -> {
             beanFactory.registerResolvableDependency(String.class,"xwf-post");
         });
+
         applicationContext.refresh();
 
          //如果采用这种方式，需要将register放到refresh之后 原因和 refresh 中代码的spring应用上下文启动过程有关
@@ -35,9 +38,9 @@ public class ResolvableDependencySourceDemo {
 //            configurableListableBeanFactory.registerResolvableDependency(String.class,"xwf");
 //
 //        }
-
-        ResolvableDependencySourceDemo bean = applicationContext.getBean(ResolvableDependencySourceDemo.class);
-        System.out.println(bean.name);
+//        applicationContext.register(ResolvableDependencySourceDemo.class);
+//        ResolvableDependencySourceDemo bean = applicationContext.getBean(ResolvableDependencySourceDemo.class);
+//        System.out.println(bean.name);
 
         applicationContext.close();
     }
