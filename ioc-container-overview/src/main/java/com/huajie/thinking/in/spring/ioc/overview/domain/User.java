@@ -14,7 +14,8 @@ import java.util.List;
  */
 public class User implements BeanNameAware {
 
-    private String beanName;
+    // 这个字段只是辅助打印 并不需要序列化
+    private transient String beanName;
 
     private Long id;
 

@@ -106,6 +106,7 @@ public class BeanScopeDemo implements DisposableBean{
     }
 
     private static void scopeBeanByLookup(AnnotationConfigApplicationContext applicationContext) {
+        System.out.println("======依赖查找======");
         for (int i = 0; i < 3; i++) {
             User singletonUser = applicationContext.getBean("singletonUser", User.class);
             System.out.println("singletonUser===" + singletonUser);
@@ -116,13 +117,14 @@ public class BeanScopeDemo implements DisposableBean{
     }
 
     private static void scopeBeanByInjection(AnnotationConfigApplicationContext applicationContext) {
+        System.out.println("======依赖注入======");
         BeanScopeDemo demo = applicationContext.getBean(BeanScopeDemo.class);
         System.out.println(demo.singletonUser1);
         System.out.println(demo.singletonUser2);
         System.out.println(demo.prototypeUser1);
         System.out.println(demo.prototypeUser2);
-
-        System.out.println(demo.users);
+        System.out.println("======集合======");
+        demo.users.entrySet().stream().forEach(System.out::println);
     }
 
 
