@@ -22,6 +22,7 @@ public class BeanMetadataConfigurationDemo {
         String location = "/META-INF/user.properties";
 
         Resource resource = new ClassPathResource(location);
+        //指定字符集
         EncodedResource encodedResource = new EncodedResource(resource,"GBK");
         int beanDefinitionsCount = reader.loadBeanDefinitions(encodedResource);
         System.out.println("Bean 定义加载的数量："+beanDefinitionsCount);
