@@ -30,9 +30,9 @@ public class BeanLifecycleDemo {
         beanFactory.preInstantiateSingletons();
 
         UserHolder userHolder = beanFactory.getBean("userHolder", UserHolder.class);
-        beanFactory.destroyBean("userHolder",userHolder);
-        System.out.println(userHolder);
+//        beanFactory.destroyBean("userHolder",userHolder);
         beanFactory.destroySingletons();
+        System.out.println(userHolder);
         userHolder=null;
         System.gc();
         Thread.sleep(5000);
