@@ -16,7 +16,7 @@ public class BeanConfigurationMetadataDemo {
         beanDefinitionBuilder.addPropertyValue("name", "xwf");
         AbstractBeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
         // 附加属性(不影响 Bean 实例化、属性赋值)
-        beanDefinition.setAttribute("name", "谢文峰");
+        beanDefinition.setAttribute("name", "小仙");
         //当前 BeanDefinition 来自于何方（辅助作用）
         beanDefinition.setSource(BeanConfigurationMetadataDemo.class);
 

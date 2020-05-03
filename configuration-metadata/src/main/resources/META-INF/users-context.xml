@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:users="http://com.huajie/schema/users"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://com.huajie/schema/users
+        http://com.huajie/schema/users.xsd">
+
+    <!--<bean id="user" class="com.huajie.thinking.in.spring.ioc.overview.domain.User">-->
+    <!--<property name="name" value="xwf"/>-->
+    <!--<property name="age" value="18"/>-->
+    <!--<property name="id" value="1"/>-->
+    <!--<property name="configFileReource" value="classpath:/META-INF/user-config.properties"/>-->
+    <!--<property name="city" value="WUHAN"/>-->
+    <!--<property name="cities" value="WUHAN,BEIJING"/>-->
+    <!--<property name="lifeCities" value="WUHAN,BEIJING"/>-->
+    <!--</bean>-->
+
+    <users:user id="1" name="小仙" city="WUHAN"/>
+
+</beans>
