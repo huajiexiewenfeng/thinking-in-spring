@@ -18,6 +18,7 @@
         <module>bean-lifecycle</module>
         <module>configuration-metadata</module>
         <module>resource</module>
+        <module>i18n</module>
     </modules>
     <packaging>pom</packaging>
 
