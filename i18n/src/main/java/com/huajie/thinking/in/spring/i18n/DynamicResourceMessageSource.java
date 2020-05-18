@@ -10,10 +10,7 @@ import org.springframework.core.io.support.EncodedResource;
 import org.springframework.util.StringUtils;
 
 import javax.tools.JavaFileObject;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.nio.file.*;
 import java.text.MessageFormat;
 import java.util.Locale;
@@ -72,7 +69,7 @@ public class DynamicResourceMessageSource extends AbstractMessageSource implemen
                 // 获取上级目录
                 Path driPath = messagePropertiesFilePath.getParent();
                 // 注册 WatchService 到 driPath
-                driPath.register(watchService, ENTRY_MODIFY, ENTRY_CREATE, ENTRY_DELETE);
+                driPath.register(watchService, ENTRY_MODIFY);
                 // 处理资源文件变化
                 ProcessMessagePropertiesChanged(watchService);
             } catch (IOException e) {
@@ -104,7 +101,8 @@ public class DynamicResourceMessageSource extends AbstractMessageSource implemen
                                 // 处理为绝对路径
                                 Path filePath = dirPath.resolve(fileRelativePath);
                                 File file = filePath.toFile();
-                                Properties properties = loadMessageProperties(new FileReader(file));
+                                Reader reader = new InputStreamReader(new FileInputStream(file), ENCODING);
+                                Properties properties = loadMessageProperties(reader);
                                 synchronized (this.messageProperties) {
                                     this.messageProperties.clear();
                                     this.messageProperties.putAll(properties);
