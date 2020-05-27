@@ -9,7 +9,6 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.EncodedResource;
 import org.springframework.util.StringUtils;
 
-import javax.tools.JavaFileObject;
 import java.io.*;
 import java.nio.file.*;
 import java.text.MessageFormat;
@@ -23,13 +22,13 @@ import static java.nio.file.StandardWatchEventKinds.*;
 /**
  * 动态（更新）资源 {@link MessageSource} 实现
  * <p>
- * 实现步骤
- * 1.定位资源位置（properties 文件）
- * 2.初始化 Properties 对象
- * 3.实现 AbstractMessageSource#resolveCode
- * 4.监听资源文件（Java NIO 2 WatchService）
- * 5.线程池处理文件变化
- * 6.重新装载 Properties 对象
+ * 实现步骤<br/>
+ * 1.定位资源位置（properties 文件）<br/>
+ * 2.初始化 Properties 对象<br/>
+ * 3.实现 AbstractMessageSource#resolveCode<br/>
+ * 4.监听资源文件（Java NIO 2 WatchService）<br/>
+ * 5.线程池处理文件变化<br/>
+ * 6.重新装载 Properties 对象<br/>
  *
  * @see MessageSource
  * @see AbstractMessageSource
