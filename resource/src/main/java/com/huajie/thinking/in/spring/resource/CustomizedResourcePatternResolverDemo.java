@@ -7,6 +7,8 @@ import org.springframework.core.io.FileSystemResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.EncodedResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 
 import java.io.File;
@@ -17,11 +19,11 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 /**
- * 带有字符编码 {@link FileSystemResourceLoader} 示例
+ * 通配路径资源加载器 {@link ResourcePatternResolver} 示例
  *
- * @see FileSystemResourceLoader
- * @see FileSystemResource
- * @see EncodedResource
+ * @see PathMatchingResourcePatternResolver
+ * @see ResourcePatternResolver
+ * @see AntPathMatcher
  */
 public class CustomizedResourcePatternResolverDemo {
     public static void main(String[] args) throws IOException {

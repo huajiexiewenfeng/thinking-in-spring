@@ -19,7 +19,7 @@ public class InjectionResourceDemo {
     @Value("classpath:/META-INF/default.properties")
     private Resource resource;
 
-    @Value("classpath:/META-INF/*.properties")
+    @Value("classpath:/META-INF/default.properties")
     private Collection<Resource> resources;
 
     @Value("classpath*:/META-INF/*.properties")
@@ -37,12 +37,10 @@ public class InjectionResourceDemo {
         String content = ResourceUtils.getContent(bean.resource);
         System.out.println(content);
         System.out.println("================");
-        System.out.println(bean.currentPath);
-        System.out.println("================");
         System.out.println(bean.resources);
-        bean.resources.forEach(resource -> System.out.println(ResourceUtils.getContent(resource)));
+        bean.resources.forEach(resource -> System.out.println("Collection:"+ResourceUtils.getContent(resource)));
         System.out.println("================");
-        Stream.of(bean.resourcesArray).forEach(resource -> System.out.println(ResourceUtils.getContent(resource)));
+        Stream.of(bean.resourcesArray).forEach(resource -> System.out.println("Resource[]:"+ResourceUtils.getContent(resource)));
 
         applicationContext.close();
     }
