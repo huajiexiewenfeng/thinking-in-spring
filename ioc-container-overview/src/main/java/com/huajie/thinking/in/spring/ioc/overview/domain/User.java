@@ -31,6 +31,16 @@ public class User implements BeanNameAware {
 
     private List<City> lifeCities;
 
+    private Company company;
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     public List<City> getLifeCities() {
         return lifeCities;
     }
@@ -102,14 +112,14 @@ public class User implements BeanNameAware {
     @Override
     public String toString() {
         return "User{" +
-                "beanName='" + beanName + '\'' +
-                ", id=" + id +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", configFileReource=" + configFileReource +
                 ", city=" + city +
                 ", cities=" + Arrays.toString(cities) +
                 ", lifeCities=" + lifeCities +
+                ", company=" + company +
                 '}';
     }
 
