@@ -1,6 +1,5 @@
 package com.huajie.thinking.in.spring.i18n;
 
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -8,7 +7,6 @@ import org.springframework.boot.autoconfigure.context.MessageSourceAutoConfigura
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
@@ -26,7 +24,7 @@ public class CustomizedMessageSourceBeanDemo {
      * 在 Spring Boot 场景中，Primary Configuration Sources(Classes) 高于 *AutoConfiguration
      * @return
      */
-    @Bean(AbstractApplicationContext.MESSAGE_SOURCE_BEAN_NAME)
+//    @Bean(AbstractApplicationContext.MESSAGE_SOURCE_BEAN_NAME)
     public MessageSource messageSource(){
         return new ReloadableResourceBundleMessageSource();
     }

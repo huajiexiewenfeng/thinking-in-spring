@@ -14,5 +14,4 @@ public class Handler extends URLStreamHandler {
         return new XURLConnection(u);
     }
 
-
 }
