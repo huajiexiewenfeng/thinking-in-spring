@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- 3.将其声明为 Spring Bean-->
+    <bean id="customPropertyEditorRegistrar"
+          class="com.huajie.thinking.in.spring.conversion.CustomizedPropertyEditorRegistrar"/>
+
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="propertyEditorRegistrars">
+            <list>
+                <ref bean="customPropertyEditorRegistrar"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- java.util.Properties -->
+    <util:properties id="context">
+        <prop key="id">1</prop>
+        <prop key="name">小仙</prop>
+    </util:properties>
+
+    <bean id="user" class="com.huajie.thinking.in.spring.conversion.domain.User">
+        <property name="name" value="xwf"/>
+        <property name="age" value="18"/>
+        <property name="company" value="alibaba,wuhan"/>
+        <property name="companyAsText" ref="company"/>
+    </bean>
+
+    <bean id="company" class="com.huajie.thinking.in.spring.conversion.domain.Company">
+        <property name="name" value="alimama"/>
+        <property name="address" value="hangzhou"/>
+    </bean>
+
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.huajie.thinking.in.spring.conversion.CompanyToStringConverter"/>
+            </set>
+        </property>
+    </bean>
+
+</beans>

@@ -15,6 +15,9 @@ public class PropertyEditorDemo {
         String text = "name = 小仙";
         PropertyEditor propertyEditor = new StringToPropertiesPropertyEditor();
         propertyEditor.setAsText(text);
+        propertyEditor.getAsText();
         System.out.printf("类型：%s，值：%s\n", propertyEditor.getValue().getClass(), propertyEditor.getValue());
+        System.out.printf("getAsText 值：%s\n", propertyEditor.getAsText());
+
     }
 }
