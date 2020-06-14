@@ -23,6 +23,7 @@
         <module>data-binding</module>
         <module>event</module>
         <module>conversion</module>
+        <module>generic</module>
     </modules>
     <packaging>pom</packaging>
 
