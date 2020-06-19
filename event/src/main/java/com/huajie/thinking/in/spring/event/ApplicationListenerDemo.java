@@ -1,7 +1,6 @@
 package com.huajie.thinking.in.spring.event;
 
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationListener;
+import org.springframework.context.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.event.*;
 import org.springframework.core.annotation.Order;
@@ -15,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @date ：Created in 2020\6\18 0018 20:52
  */
 @EnableAsync
-public class ApplicationListenerDemo {
+public class ApplicationListenerDemo implements ApplicationEventPublisherAware {
     public static void main(String[] args) {
 //        GenericApplicationContext context = new GenericApplicationContext();
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
@@ -40,10 +39,36 @@ public class ApplicationListenerDemo {
         context.close();
     }
 
+    @Override
+    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+        applicationEventPublisher.publishEvent(new ApplicationEvent("hello,world"){
+
+        });
+        // 改造成 PayLoadApplicationEvent
+        applicationEventPublisher.publishEvent("hello,world");
+        // 发送 PayLoadApplicationEvent
+        applicationEventPublisher.publishEvent(new PayloadApplicationEvent(this,"hello,world"));
+        // 发送 PayLoadApplicationEvent
+        applicationEventPublisher.publishEvent(new MyPayLoadApplicationEvent(this,"hello,world"));
+    }
+
+    static class MyPayLoadApplicationEvent<String> extends PayloadApplicationEvent<String>{
+
+        /**
+         * Create a new PayloadApplicationEvent.
+         *
+         * @param source  the object on which the event initially occurred (never {@code null})
+         * @param payload the payload object (never {@code null})
+         */
+        public MyPayLoadApplicationEvent(Object source, String payload) {
+            super(source, payload);
+        }
+    }
+
     /**
      * 这里的泛型设计可以指定具体类型，或者父类
      */
-    static class MyApplicationListener implements ApplicationListener<ContextRefreshedEvent>{
+   public static class MyApplicationListener implements ApplicationListener<ContextRefreshedEvent>{
 
         @Override
         public void onApplicationEvent(ContextRefreshedEvent event) {
