@@ -12,6 +12,7 @@ public class MyApplicationListener implements ApplicationListener<MySpringEvent>
 
     @Override
     public void onApplicationEvent(MySpringEvent event) {
-        System.out.println("MyApplicationListener - 接收到 Spring 事件：" + event);
+        System.out.println(String.format("MyApplicationListener - 接收到 Spring 事件：[线程：%s]:%s\n",
+                Thread.currentThread().getName(), event));
     }
 }

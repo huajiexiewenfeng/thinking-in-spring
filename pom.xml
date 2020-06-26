@@ -41,21 +41,29 @@
             </dependency>
 
             <!--<dependency>-->
-                <!--<groupId>org.springframework</groupId>-->
-                <!--<artifactId>spring-jdbc</artifactId>-->
-                <!--<version>${spring.version}</version>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-jdbc</artifactId>-->
+            <!--<version>${spring.version}</version>-->
             <!--</dependency>-->
 
             <!--<dependency>-->
-                <!--<groupId>org.springframework</groupId>-->
-                <!--<artifactId>spring-webflux</artifactId>-->
-                <!--<version>${spring.version}</version>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-webflux</artifactId>-->
+            <!--<version>${spring.version}</version>-->
             <!--</dependency>-->
 
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
                 <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.SR5</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
         </dependencies>
@@ -70,8 +78,8 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-jdbc</artifactId>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-jdbc</artifactId>-->
         <!--</dependency>-->
 
         <dependency>
@@ -80,8 +88,8 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-webflux</artifactId>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-webflux</artifactId>-->
         <!--</dependency>-->
     </dependencies>
 
