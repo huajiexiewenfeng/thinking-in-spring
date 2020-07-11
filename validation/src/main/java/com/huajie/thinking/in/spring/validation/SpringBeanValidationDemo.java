@@ -20,7 +20,6 @@ public class SpringBeanValidationDemo {
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/bean-validation-context.xml");
 
-
         applicationContext.refresh();
 
         Validator bean = applicationContext.getBean(Validator.class);

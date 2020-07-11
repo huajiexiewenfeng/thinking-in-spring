@@ -19,12 +19,6 @@
         </property>
     </bean>
 
-    <!-- java.util.Properties -->
-    <util:properties id="context">
-        <prop key="id">1</prop>
-        <prop key="name">小仙</prop>
-    </util:properties>
-
     <bean id="user" class="com.huajie.thinking.in.spring.conversion.domain.User">
         <property name="name" value="xwf"/>
         <property name="age" value="18"/>
@@ -37,6 +31,7 @@
         <property name="address" value="hangzhou"/>
     </bean>
 
+    <!-- 声明 ConversionServiceFactoryBean -->
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <set>

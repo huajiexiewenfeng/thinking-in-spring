@@ -13,6 +13,7 @@ import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
