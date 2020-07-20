@@ -33,10 +33,10 @@ public class ApplicationListenerDemo implements ApplicationEventPublisherAware {
         // 方法二：基于 ApplicationListener 注册为 Spring Bean
         context.register(MyApplicationListener.class);
 
-        context.refresh();
-        context.start();
-        context.stop();
-        context.close();
+        context.refresh(); // 对应事件 ContextRefreshedEvent
+        context.start();// 对应事件 ContextStartedEvent
+        context.stop();// 对应事件 ContextStoppedEvent
+        context.close();// 对应事件 ContextClosedEvent
     }
 
     @Override

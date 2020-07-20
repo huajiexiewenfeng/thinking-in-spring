@@ -21,7 +21,7 @@ public class ObservableDemo {
 
     static class EventObservable extends Observable {
         public void setChanged() {
-            super.setChanged();
+            super.setChanged();// 必须通过手动设置的方式修改 changed 状态位
         }
 
         public void notifyObservers(Object obj) {
