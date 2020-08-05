@@ -2,6 +2,7 @@ package com.huajie.thinking.in.spring.event;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEventPublisher;
@@ -16,7 +17,7 @@ import javax.annotation.PostConstruct;
  * @author ：xwf
  * @date ：Created in 2020\6\25 0025 15:31
  */
-public class InjectionApplicationEventPublisherDemo implements ApplicationEventPublisherAware, ApplicationContextAware {
+public class InjectionApplicationEventPublisherDemo implements ApplicationEventPublisherAware, ApplicationContextAware, BeanPostProcessor {
 
     @Autowired
     private ApplicationEventPublisher autowiredApplicationEventPublisher;
