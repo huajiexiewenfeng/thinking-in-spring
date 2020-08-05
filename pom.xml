@@ -26,6 +26,7 @@
         <module>generic</module>
         <module>annotation</module>
         <module>environment</module>
+        <module>application-context-lifecycle</module>
     </modules>
     <packaging>pom</packaging>
 
