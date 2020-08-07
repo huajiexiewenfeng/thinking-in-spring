@@ -27,6 +27,7 @@
         <module>annotation</module>
         <module>environment</module>
         <module>application-context-lifecycle</module>
+        <module>questions</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -64,7 +65,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR5</version>
+                <version>Finchley.SR2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
