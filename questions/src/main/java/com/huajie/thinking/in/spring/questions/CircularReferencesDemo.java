@@ -15,10 +15,10 @@ public class CircularReferencesDemo {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 注册
         applicationContext.register(CircularReferencesDemo.class);
-        // 开启
-        applicationContext.refresh();
         // 循环引用默认开启
         applicationContext.setAllowCircularReferences(true);
+        // 开启
+        applicationContext.refresh();
         Student student = applicationContext.getBean(Student.class);
         ClassRoom classRoom = applicationContext.getBean(ClassRoom.class);
         System.out.println("student:" + student);
