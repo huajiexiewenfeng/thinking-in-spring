@@ -2,20 +2,19 @@ package com.huajie.thinking.in.spring.annotation;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
 
 /**
- * {@link Component} 扫描示例
+ * Spring 注解属性覆盖示例
  *
  * @author ：xwf
- * @date ：Created in 2020\7\11 0011 13:12
+ * @date ：Created in 2020-9-23 23:32
  */
-@ComponentScan(basePackages = "com.huajie.thinking.in.spring.annotation")
-public class ComponentScanDemo {
+@MyComponentScan2(scanBasePackages = "com.huajie.thinking.in.spring.annotation")
+public class AttributeOverridesDemo {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class
-        context.register(ComponentScanDemo.class);
+        context.register(AttributeOverridesDemo.class);
         // 启动 Spring 应用上下文
         context.refresh();
 
