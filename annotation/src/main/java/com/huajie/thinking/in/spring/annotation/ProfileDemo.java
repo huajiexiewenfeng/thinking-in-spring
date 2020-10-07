@@ -13,7 +13,7 @@ public class ProfileDemo {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         ConfigurableEnvironment environment = context.getEnvironment();
         // 设置 Profile
-        environment.setActiveProfiles("even");
+        environment.setDefaultProfiles("even");
         // 注册 Configuration Class
         context.register(ProfileDemo.class);
         // 启动 Spring 应用上下文
@@ -33,8 +33,8 @@ public class ProfileDemo {
     }
 
     @Bean
-//    @Profile("even")
-    @Conditional(EvenProfileCondition.class)
+    @Profile("even")
+//    @Conditional(EvenProfileCondition.class)
     public Integer even() {// 偶数
         return 2;
     }
