@@ -43,7 +43,6 @@ public class EnvironmentPropertySourceChangeDemo {
         // 启动 spring 应用上下文
         context.refresh();
 
-
         EnvironmentPropertySourceChangeDemo demo = context.getBean(EnvironmentPropertySourceChangeDemo.class);
         System.out.println(demo.userName);
 
