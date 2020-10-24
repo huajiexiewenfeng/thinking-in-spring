@@ -36,12 +36,14 @@ public class EnvironmentPropertySourceChangeDemo {
 
         propertySources.addFirst(propertySource);
 
-        for (PropertySource ps : environment.getPropertySources()) {
-            System.out.println(ps.toString());
-        }
-
         // 启动 spring 应用上下文
         context.refresh();
+
+        sources.put("user.name", "007");
+
+        for (PropertySource ps : environment.getPropertySources()) {
+            System.out.println(ps.toString()+":value="+ps.getProperty("user.name"));
+        }
 
         EnvironmentPropertySourceChangeDemo demo = context.getBean(EnvironmentPropertySourceChangeDemo.class);
         System.out.println(demo.userName);
