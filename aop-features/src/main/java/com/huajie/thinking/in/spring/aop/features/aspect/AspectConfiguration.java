@@ -49,7 +49,7 @@ public class AspectConfiguration {
   }
 
   @AfterReturning("anyPublicMethod()")
-  private void afterAnyMethod() {
+  private void afterReturnAnyMethod() {
     System.out.println("@AfterReturning any public method.");
   }
 

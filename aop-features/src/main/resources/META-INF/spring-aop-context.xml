@@ -17,12 +17,17 @@
       <aop:pointcut id="anyPublicMethod" expression="execution(public * *(..))"/>
       <aop:before method="beforeMethod" pointcut-ref="anyPublicMethod"/>
       <aop:around method="aroundMethod" pointcut-ref="anyPublicMethod"/>
+      <aop:after method="finalizeAnyMethod" pointcut-ref="anyPublicMethod"/>
+      <aop:after-returning method="afterReturnAnyMethod" pointcut-ref="anyPublicMethod"/>
+      <aop:after-throwing method="afterThrowingAnyMethod" pointcut-ref="anyPublicMethod"/>
     </aop:aspect>
   </aop:config>
 
-  <bean id="aspectXmlConfig" class="com.huajie.thinking.in.spring.aop.features.aspect.AspectXMLConfiguration"/>
+  <bean id="aspectXmlConfig"
+    class="com.huajie.thinking.in.spring.aop.features.aspect.AspectXMLConfiguration"/>
 
-  <bean id="aspectJSchemaBasedPointcutDemo" class="com.huajie.thinking.in.spring.aop.features.AspectJSchemaBasedPointcutDemo"/>
+  <bean id="aspectJSchemaBasedPointcutDemo"
+    class="com.huajie.thinking.in.spring.aop.features.AspectJSchemaBasedPointcutDemo"/>
 
   <bean id="echoService" class="com.huajie.thinking.in.spring.aop.overview.DefaultEchoService"/>
 
