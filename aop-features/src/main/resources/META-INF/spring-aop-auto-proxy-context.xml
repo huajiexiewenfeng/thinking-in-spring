@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+  <bean id="echoService" class="com.huajie.thinking.in.spring.aop.overview.DefaultEchoService"/>
+
+  <!-- BeanNameAutoProxyCreator 方式 -->
+<!--  <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">-->
+<!--    <property name="beanNames" value="echo*"/>-->
+<!--    <property name="interceptorNames">-->
+<!--      <value>echoServiceMethodInterceptor</value>-->
+<!--    </property>-->
+<!--  </bean>-->
+
+  <!-- BeanNameAutoProxyCreator 方式 -->
+  <bean id="echoServiceMethodInterceptor"
+    class="com.huajie.thinking.in.spring.aop.features.interceptor.EchoServiceMethodInterceptor"/>
+
+  <!-- AutoProxy Bean -->
+  <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+
+  <!-- Pointcut Bean -->
+  <bean id="echoServicePointcut" class="com.huajie.thinking.in.spring.aop.features.pointcut.EchoServicePointcut">
+    <constructor-arg value="echo" index="0"/>
+    <constructor-arg value="com.huajie.thinking.in.spring.aop.overview.EchoService" index="1"/>
+  </bean>
+
+  <!-- PointcutAdvisor Bean -->
+  <bean class="org.springframework.aop.support.DefaultPointcutAdvisor">
+    <constructor-arg ref="echoServicePointcut" index="0"/>
+    <constructor-arg ref="echoServiceMethodInterceptor" index="1"/>
+  </bean>
+
+</beans>
