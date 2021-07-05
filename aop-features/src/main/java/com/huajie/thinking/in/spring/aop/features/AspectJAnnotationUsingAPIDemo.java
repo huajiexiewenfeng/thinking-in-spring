@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.aop.AfterReturningAdvice;
 import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -29,13 +30,26 @@ public class AspectJAnnotationUsingAPIDemo {
       @Override
       public void before(Method method, Object[] args, Object target) throws Throwable {
         if ("put".equals(method.getName()) && args.length == 2) {
-          System.out.printf("当前存放 key:%s,value:%s \n", args[0], args[1]);
+          System.out.printf("before->当前存放 key:%s,value:%s \n", args[0], args[1]);
+        }
+      }
+    });
+
+    // 增加 afterReturnAdvice
+    proxyFactory.addAdvice(new AfterReturningAdvice() {
+      @Override
+      public void afterReturning(Object returnValue, Method method, Object[] args, Object target)
+          throws Throwable {
+        if ("put".equals(method.getName()) && args.length == 2) {
+          System.out.printf("after->当前存放 key:%s,value:%s,之前关联的 value:%s \n", args[0], args[1],
+              returnValue);
         }
       }
     });
 
     Map<String, Object> proxy = proxyFactory.getProxy();
-    proxy.put("1","xwf");
+    proxy.put("1", "xwf");
+    proxy.put("1", "B");
   }
 
 }
