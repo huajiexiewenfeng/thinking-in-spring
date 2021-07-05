@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
+ * 基于注解配置的 PointCut 示例
+ *
  * @Author: xiewenfeng
  * @Date: 2021/6/9 17:29
  */

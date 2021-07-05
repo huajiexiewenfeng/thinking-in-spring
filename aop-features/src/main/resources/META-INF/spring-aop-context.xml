@@ -12,6 +12,17 @@
   <!-- 激活 -->
   <aop:aspectj-autoproxy/>
 
+  <aop:config>
+    <aop:aspect id="AspectXmlConfig" ref="aspectXmlConfig">
+      <aop:pointcut id="anyPublicMethod" expression="execution(public * *(..))"/>
+      <aop:before method="beforeMethod" pointcut-ref="anyPublicMethod"/>
+    </aop:aspect>
+  </aop:config>
+
+  <bean id="aspectXmlConfig" class="com.huajie.thinking.in.spring.aop.features.aspect.AspectXMLConfiguration"/>
+
+  <bean id="aspectJSchemaBasedPointcutDemo" class="com.huajie.thinking.in.spring.aop.features.AspectJSchemaBasedPointcutDemo"/>
+
   <bean id="echoService" class="com.huajie.thinking.in.spring.aop.overview.DefaultEchoService"/>
 
   <bean id="echoServiceProxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
