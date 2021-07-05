@@ -5,6 +5,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 
 /**
@@ -14,8 +15,8 @@ import org.springframework.core.annotation.Order;
  * @Date: 2021/5/27 17:40
  */
 @Aspect
-@Order
-public class AspectConfiguration {
+@Order(0)
+public class AspectConfiguration2 {
 
   /**
    * 匹配 Join Point
@@ -30,20 +31,7 @@ public class AspectConfiguration {
    */
   @Before("anyPublicMethod()")
   private void beforeMethod() {
-    System.out.println("@Before any public method.");
+    System.out.println("@Before any public method.(2)");
   }
-
-  @Around("anyPublicMethod()")
-  public Object aroundMethod(ProceedingJoinPoint pjp) {
-    System.out.println("@Around any public method.");
-    try {
-      // 需要主动调用方法
-      return pjp.proceed();
-    } catch (Throwable throwable) {
-      throwable.printStackTrace();
-    }
-    return null;
-  }
-
 
 }

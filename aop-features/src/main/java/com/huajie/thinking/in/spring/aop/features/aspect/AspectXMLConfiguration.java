@@ -18,7 +18,7 @@ public class AspectXMLConfiguration {
   }
 
   public Object aroundMethod(ProceedingJoinPoint pjp) {
-    System.out.println("@Around any public method.");
+    System.out.println("@Around any public method ->" + pjp.getSignature());
     try {
       // 需要主动调用方法
       return pjp.proceed();
