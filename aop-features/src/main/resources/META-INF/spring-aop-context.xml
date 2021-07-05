@@ -16,6 +16,12 @@
 
   <bean id="echoServiceProxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
     <property name="targetName" value="echoService"/>
+    <property name="interceptorNames">
+      <value>echoServiceMethodInterceptor</value>
+    </property>
   </bean>
+
+  <bean id="echoServiceMethodInterceptor"
+    class="com.huajie.thinking.in.spring.aop.features.interceptor.EchoServiceMethodInterceptor"/>
 
 </beans>
