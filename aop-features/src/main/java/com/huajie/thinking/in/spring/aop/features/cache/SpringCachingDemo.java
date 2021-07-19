@@ -24,8 +24,9 @@ public class SpringCachingDemo {
     configApplicationContext.register(SpringCachingDemo.class,UserImpl.class);
     configApplicationContext.refresh();
 
-    UserService user = configApplicationContext.getBean(UserService.class);
-    System.out.println(user.getUser("xwf"));
+    UserService userService = configApplicationContext.getBean(UserService.class);
+    System.out.println(userService.getUser("xwf"));
+    System.out.println(userService.getUser("xwf"));
     configApplicationContext.close();
   }
 
